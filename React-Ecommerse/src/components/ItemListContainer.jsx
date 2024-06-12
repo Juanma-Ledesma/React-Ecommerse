@@ -1,27 +1,25 @@
-import { useState, useEffect } from "react";
-import { data } from "../data";
-import { ItemList } from "./ItemList";
-import { getItems } from "../firebase/db";
+import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
+import  ItemList  from "./ItemList"
+import { getItemsFromCategory } from "../firebase/db"
 
 function ItemListContainer () {
     const [items, setItems] = useState([])
-
-	const promise = new Promise((resolve, reject) => {
-		setTimeout(() => {
-			resolve (data)
-		}, 2000)
-	})
+    const { id } = useParams()
 
     useEffect(() => {
-        getItems()
+        const getAndSetItems = async () => {
+            const products = await getItemsFromCategory(id)
+            setItems(products)
+        }
 
-        promise.then(res => setItems(res))
-    }, [promise])
+        getAndSetItems()
+    }, [id])
 
     return (
         <div>
             <>
-                <ItemList products = {data}/>
+                { <ItemList products = {items}/> }
             </>
         </div>
     )

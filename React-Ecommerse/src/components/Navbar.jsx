@@ -27,15 +27,15 @@ export const Navbar = ({
                             <ul className="menu">
                                 {/* Vinilos */}
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={'/Vinilos'}>Vinilos</Link>
+                                    <Link className="nav-link" to={'/category/Vinilos'}>Vinilos</Link>
                                 </li>
                                 {/* CDs */}
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={'/CDs'}>CDs</Link>
+                                    <Link className="nav-link" to={'/category/CDs'}>CDs</Link>
                                 </li>
                                 {/* Vinilos */}
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={'/Ropa'}>Ropa</Link>
+                                    <Link className="nav-link" to={'/category/Ropa'}>Ropa</Link>
                                 </li>
                             </ul>
                             <CartWidget

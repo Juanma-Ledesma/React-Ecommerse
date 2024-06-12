@@ -26,7 +26,7 @@ function App() {
 					countProducts={countProducts}
 					setCountProducts={setCountProducts}
 				/>
-				<Banner />
+				<Banner/>
 				<Routes>
 					<Route path="/" element={<ItemList
 					allProducts={allProducts}
