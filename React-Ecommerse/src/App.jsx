@@ -4,16 +4,21 @@ import {
 	Routes,
 	BrowserRouter,
   } from "react-router-dom";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Navbar } from './components/Navbar';
 import Banner  from './components/Banner';
-import { ItemList } from './components/ItemList';
+import ItemList from './components/ItemList';
+import { getItemsFromCategory } from "./firebase/db";
 
 function App() {
 	const [allProducts, setAllProducts] = useState([]);
 	const [total, setTotal] = useState(0);
 	const [countProducts, setCountProducts] = useState(0);
+
+	useEffect( () => {
+		getItemsFromCategory().then(products => setAllProducts(products))
+	}, [] );
 
 	return (
 		<>
@@ -28,14 +33,20 @@ function App() {
 				/>
 				<Banner/>
 				<Routes>
-					<Route path="/" element={<ItemList
-					allProducts={allProducts}
-					setAllProducts={setAllProducts}
-					total={total}
-					setTotal={setTotal}
-					countProducts={countProducts}
-					setCountProducts={setCountProducts}
-					/>} />
+					<Route 
+						path="/" 
+						element={
+							<ItemList
+								// allProducts={allProducts}
+								// setAllProducts={setAllProducts}
+								// total={total}
+								// setTotal={setTotal}
+								// countProducts={countProducts}
+								// setCountProducts={setCountProducts}
+								products={allProducts}
+							/>
+						} 
+					/>
 				</Routes>
 			</BrowserRouter>
 		</>

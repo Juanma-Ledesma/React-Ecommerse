@@ -28,8 +28,7 @@ export const getItemsFromCategory = async (category) => {
         Items.push({ ...doc.data(), id: doc.id })
     })
 
-    Items
-    return
+    return Items
 }
 
 export const getItem = async (id) => {

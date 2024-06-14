@@ -1,12 +1,11 @@
 import Item from './Item'
 
 function ItemList({ products }) {
-
+	
 	return (
 		<>
-			{products.mp(product => (
+			{products.map(product => (
 				<Item product={product} key={product.id} />
-
 			))}
 		</>
 	)
